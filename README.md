@@ -6,12 +6,17 @@ McGILL HEARTS
 
 The code in Hearts.java, Card.java, and CardPile.java were created by myself in conjunction with the remaining classes to complete an assignment for COMP-202B at McGill University.
 
-The purpose was to use object oriented programming to build up the final game.
+The purpose was to use object oriented programming to build up the final game and gain experience working in a large environment. Challenges arose when determining exactly how to build and use each object's features to efficiently dispatch the game.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 RUNNING
 
-To run the program, open Hearts.java in a compiler such as DrJava or Eclipse. Once compiled, run the program and enter integers only into the user interface (if anything but an integer is input a java.util.InputMismatchException will be thrown). If you input an illegal move, say you try to play a seven of hearts when the suite is diamonds, the program will loop back and reprompt your move.
+To run the program, download the entire library to a folder on your desktop. Open Hearts.java in a compiler such as DrJava or Eclipse then compile the program and run it.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+PLAYING
+
+Enter integers into the user interface as prompted (if anything but an integer is input a java.util.InputMismatchException will be thrown). If you input an illegal move, say you try to play a seven of hearts when the suite is diamonds, the program will loop back and reprompt your move. In this version there is only 1 human player and 3 computer players, but this can be changed to incorporate more human players. The game flows as outlined in the rules below, whereby a hand is delt then played until no more cards are in each players hand. This prompts a round to finish, the score is tallied, then the entire game continues until 100 points have been accumulated. Once 100 points have been accumulated the winner is determined and the game is over.
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 PROPOSED TASK
@@ -27,7 +32,7 @@ The game of Hearts is a card game played by exactly 4 players with a standard se
 The object of hearts is to have the lowest score of any player. Players get points by taking certain cards during the course of play. Points are tallied at the end of each hand and the game ends when at least one player reaches 100 points. Since the goal is to avoid points, players generally try to avoid taking these cards. (See exception related to ”shooting the moon” below.)
 The game play is as follows:
 
-	1.	At the beginning of each hand, all 52 cards are shuffled and dealt so that each player has 13 cards. Under standard playing rules, the players then exchange cards, but for simplicity, it is not required that you implement this feature. 
+	1.	At the beginning of each hand, all 52 cards are shuffled and dealt so that each player has 13 cards. Under standard playing rules, the players then exchange cards, but for simplicity, this feature was not implemented. 
 	
 	2.	The first turn in each round goes to the player who holds the 2 of clubs. In our version, the player holding the 2 of clubs can play any card in his or her hand
 	
