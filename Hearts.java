@@ -6,11 +6,11 @@ public class Hearts
     Player[] players = new Player[4];
     
     //The following code creates 4 players. In this case I've 
-    //created two human players and two computer players. Each player can
+    //created one human player and three computer players. Each player can
     //have methods called on them.
     
     players[0] = new HumanPlayer();
-    players[1] = new HumanPlayer();
+    players[1] = new ComputerPlayer();
     players[2] = new ComputerPlayer();
     players[3] = new ComputerPlayer();
     
@@ -22,11 +22,16 @@ public class Hearts
     
     while (!hasOneHundred)
     {
-      CardPile deck = new CardPile();      //execute one deal of a hand
+      
+      //execute one deal of a hand
+      
+      CardPile deck = new CardPile();
       deck = deck.makeFullDeck();
       deck.shuffle();
       
-      for (int k = 0; k < 13; k++)       //1)Deal the cards
+      //2) To deal the cards we run a for loop:
+      
+      for (int k = 0; k < 13; k++)
       {
         players[0].dealCardTo(deck.removeCard(0));
         players[1].dealCardTo(deck.removeCard(0));
@@ -34,7 +39,7 @@ public class Hearts
         players[3].dealCardTo(deck.removeCard(0));
       }
       
-      //2)
+      //3)
       //Here we figure out who has the 2 of clubs by making a card called theTwo. 
       //theTwo is compared to each player's hand, and that player is given the first turn.
       //This is also printed to the screen.
@@ -50,16 +55,21 @@ public class Hearts
       }
       System.out.println("Player " + turn + " begins this round.");
       
-      //3) Let each player play one card in a predefined order
+      //4)
+      //The following for loop contains two nested loops. The first has each 
+      //player play a card. The second determines who won the round. Finally the trick 
+      //and the winner are printed to the screen.
       
       CardPile whatsOnTable = new CardPile();
       Card nextPlay;
       int[] storesOrder = new int[4];
       
-      //6)If players still have cards remaining, go back to step 3, otherwise count the score of each player.
-      
       for (int z = 0; z < 13; z++)
       {
+        
+        //5
+        //The following for loop executes a round where every player plays a card.
+        
         for (int j = 0; j <= 3; j++)
         {
          nextPlay = players[turn].playLegalMove(whatsOnTable);
@@ -69,8 +79,8 @@ public class Hearts
          if (turn == 4) turn = 0;
         }
         
-       //4)
-        //This determines who won the set of 4 cards.
+        //6
+        //This next for loop determines who won the set of 4 cards.
         
         int winner = 0;
         int t = 3;
@@ -78,7 +88,7 @@ public class Hearts
         
         for (int j = 0; j <= 2; j++)
         {
-          if (whatsOnTable.peak(t).getSuit() == winningCard.getSuit()) //whatsOnTable[0] is the first card played, thus decides the suit)
+          if (whatsOnTable.peak(t).getSuit() == winningCard.getSuit()) //Note: whatsOnTable[0] is the first card played, thus it decides the suit.
           {
             if (whatsOnTable.peak(t).getValue().ordinal() > winningCard.getValue().ordinal())
             {
@@ -89,15 +99,20 @@ public class Hearts
           t -= 1;
         }
         
-        System.out.println("The trick contained " + whatsOnTable.toString());
+        System.out.println('\n' + "The trick contained " + whatsOnTable.toString());
         System.out.println("Player " + storesOrder[winner] + " won this trick." + '\n');
-        players[storesOrder[winner]].takeCards(whatsOnTable);      //5)Give to the player who won the set of 4 cards all four cards. It is now this player's turn.
+        
+        //7)
+        //The player who won receives the set of 4 cards. It is now this player's turn.
+        
+        players[storesOrder[winner]].takeCards(whatsOnTable);
         turn = storesOrder[winner];
       
       }
       
-      //The following checks to see if 100 points has been passed. Should it happen, hasOneHundred is set to true,
-      //and the while loop is terminated.
+      //8
+      //The following checks to see if 100 points has been passed. Should it happen, hasOneHundred
+      //is set to true, and the while loop is terminated.
       
       int countPoints;
       for (int x = 0; x < 4; x++)
@@ -112,7 +127,8 @@ public class Hearts
         }
       }
      }
-
+    
+  //9
   //This determines who won by figuring out who has the lowest number of points.
   //That player is then printed to the screen as The Ultimate Winner.
     
